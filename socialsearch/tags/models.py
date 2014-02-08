@@ -16,10 +16,12 @@ class Tag(Base):
     id = Column(Integer,primary_key=True)
     
     name = Column(String(256))
+    image = Column(String(2048))
     
-    def __init__(self,name,created_by):
+    def __init__(self,name,image):
         
         self.name = name
+        self.image = image
         
 class Badge(Base):
     
@@ -27,9 +29,11 @@ class Badge(Base):
     id = Column(Integer,primary_key=True)
     
     name = Column(String(256))
+    image = Column(String(2048))
     
-    def __init__(self,name):
+    def __init__(self,name,image):
         
         self.name = name
+        self.image = image
         
         

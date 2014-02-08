@@ -35,6 +35,7 @@ CREATE TABLE IF NOT EXISTS
 `badges` (
 	`id` int(11) AUTO_INCREMENT,
 	`name` varchar(256),
+	`image` varchar(2048),
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -56,6 +57,7 @@ CREATE TABLE IF NOT EXISTS
 `tags` (
 	`id` int(11) AUTO_INCREMENT,
 	`name` varchar(256),
+	`image` varchar(2048),
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
