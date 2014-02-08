@@ -28,6 +28,14 @@ def main(global_config, **settings):
 
     session_factory = UnencryptedCookieSessionFactoryConfig('itsaseekreet')
     config = Configurator(settings=settings,root_factory='.models.RootFactory', session_factory=session_factory)
+    
+    """Velruse settings
+    """
+    config.include('velruse.providers.facebook')
+    config.add_facebook_login_from_settings(prefix='velruse.facebook.')
+    config.include('velruse.providers.google_oauth2')
+    config.add_google_oauth2_login_from_settings(prefix='velruse.google.')
+    
 
     authn_policy = AuthTktAuthenticationPolicy('seekrit', hashalg='sha512')
     authz_policy = ACLAuthorizationPolicy()

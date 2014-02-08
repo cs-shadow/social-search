@@ -18,6 +18,7 @@ requires = [
     'zope.sqlalchemy',
     'waitress',
     'MySQL-python',
+    'velruse'
     ]
 
 setup(name='SocialSearch',
