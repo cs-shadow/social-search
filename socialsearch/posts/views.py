@@ -2,7 +2,7 @@ from pyramid.httpexceptions import HTTPFound
 from pyramid.view import view_config
 from pyramid.security import authenticated_userid
 
-from models import DBSession,Post,PostTag,PostLike,PostDislike
+from models import DBSession,Post,PostTag,PostLike,PostDislike,Content
 from ..users.models import User
 from ..util import getTimeEpoch,row2dict
 
@@ -12,19 +12,36 @@ from sqlalchemy import and_
 def postAdd(request):
     
     currentUser = int(authenticated_userid(request))
-    
     rankWeight = None #TODO
-    
     topic_id = request.POST['topic']
-    content_title = request.POST['content_title']
-    content_URL = request.POST['content_URL']
-    content_type = "URL" #TODO
     
-    postToSave = Post(currentUser,rankWeight,content_title,content_URL,content_type,topic_id)
-    DBSession.add(postToSave)
+    newPost = Post(currentUser,rankWeight,topic_id)
+    DBSession.add(newPost)
     DBSession.flush()
     
-    return {'post' : row2dict(postToSave)}
+    contentTitles = []
+    contentURLs = []
+    for key, value in request.POST.iteritems():
+        if key == "title" and value != "":
+            contentTitles.append(value)
+        elif key == "URL" and value != "":
+            contentURLs.append(value)
+    
+    contents = []
+    for title,URL in zip(contentTitles,contentURLs):
+        contentType = "LINK"  # TODO
+        
+        newContent = Content(title,URL,contentType,newPost.id)
+        DBSession.add(newContent)
+        DBSession.flush()
+        
+        contents.append(row2dict(newContent))
+    
+    post = {}
+    post['post'] = row2dict(newPost)
+    post['contents'] = contents
+    
+    return {'post' : post}
 
 @view_config(route_name='postGet',renderer='json')
 def postGet(request):
