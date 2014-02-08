@@ -49,7 +49,7 @@ def login_complete_view(request):
     
     email = result['profile']['verifiedEmail']
     
-    dbFoundUser = DBSession.query(User.id).filter(User.email == email).first()
+    dbFoundUser = DBSession.query(User).filter(User.email == email).first()
     
     if dbFoundUser == None:
         
@@ -96,12 +96,12 @@ def login_complete_view(request):
                      about,
                      password,profile_pic)
         
-        request.session['user'] = row2dict(dbFoundUser)
-        
         DBSession.add(dbFoundUser)
         DBSession.flush()
 
+    request.session['user'] = row2dict(dbFoundUser)
     headers = remember(request,dbFoundUser.id) 
+
     return HTTPFound(location = request.route_url('home'), headers = headers)
 
 @view_config(route_name='logout')
