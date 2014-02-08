@@ -56,8 +56,6 @@ CREATE TABLE IF NOT EXISTS
 `tags` (
 	`id` int(11) AUTO_INCREMENT,
 	`name` varchar(256),
-	`created_by` int(11),
-	FOREIGN KEY (`created_by`) REFERENCES users(`id`),
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

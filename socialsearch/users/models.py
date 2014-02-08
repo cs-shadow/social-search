@@ -4,6 +4,7 @@ from sqlalchemy import (
     )
 
 from ..models import Base,DBSession
+from ..tags.models import Tag,Badge
 
 from sqlalchemy.types import String
 from sqlalchemy.schema import ForeignKey
@@ -67,6 +68,22 @@ class UserStats(Base):
         
         self.user_id = user_id
         self.points = points
+        
+class UserBadge(Base):
+    
+    __tablename__ = 'user_badges'
+    id = Column(Integer,primary_key=True)
+    
+    user_id = Column(Integer,ForeignKey('users.id'),default = 1)
+    user = relationship("User",foreign_keys=[user_id])
+    
+    badge_id = Column(Integer,ForeignKey('badges.id'),default = 1)
+    badge = relationship("Badge",foreign_keys=[badge_id])
+    
+    def __init__(self,user_id,badge_id):
+        
+        self.user_id = user_id
+        self.badge_id = badge_id
         
         
 class UserFollowedTag(Base):
