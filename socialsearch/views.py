@@ -14,7 +14,26 @@ def homeView(request):
 
 @view_config(route_name='home',effective_principals=[Authenticated], renderer='dashboard.mako')
 def dashboard(request):
-    currentUser = int(authenticated_userid(request))    
+    return {}
+
+@view_config(route_name='profile',renderer='profile.mako')
+def profile(request):
+    return {}
+
+@view_config(route_name='about',renderer='about.mako',permission='__no_permission_required__')
+def about(request):
+    return {}
+
+@view_config(route_name='contact',renderer='contact.mako',permission='__no_permission_required__')
+def contact(request):
+    return {}
+
+@view_config(route_name='terms',renderer='terms.mako',permission='__no_permission_required__')
+def terms(request):
+    return {}
+
+@view_config(route_name='team',renderer='team.mako',permission='__no_permission_required__')
+def team(request):
     return {}
 
 @forbidden_view_config()

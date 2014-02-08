@@ -36,4 +36,19 @@ class Badge(Base):
         self.name = name
         self.image = image
         
+class Topic(Base):
+    
+    __tablename__ = 'topics'
+    id = Column(Integer,primary_key=True)
+    
+    name = Column(String(256))
+    description = Column(String(2048))
+    image = Column(String(2048))
+    
+    def __init__(self,name,image,description):
+        
+        self.name = name
+        self.image = image
+        self.description = description
+        
         

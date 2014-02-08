@@ -74,6 +74,15 @@ CREATE TABLE IF NOT EXISTS
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
+CREATE TABLE IF NOT EXISTS 
+`topics` (
+	`id` int(11) AUTO_INCREMENT,
+	`name` varchar(256),
+	`description` varchar(2048),
+	`image` varchar(2048),
+	PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 
 CREATE TABLE IF NOT EXISTS 
 `posts` (
@@ -83,7 +92,9 @@ CREATE TABLE IF NOT EXISTS
 	`rank_weight` int(11),
 	`content` varchar(2048),
 	`content_type` varchar(256),
+	`topic_id` int(11),
 	FOREIGN KEY (`user_id`) REFERENCES users(`id`),
+	FOREIGN KEY (`topic_id`) REFERENCES topics(`id`),
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

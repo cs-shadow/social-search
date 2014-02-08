@@ -52,20 +52,29 @@ def main(global_config, **settings):
 
     """ Routes Here """
     config.add_route('home', '/')
+    config.add_route('profile', '/profile')
+    config.add_route('about', '/about')
+    config.add_route('contact', '/contact')
+    config.add_route('terms', '/terms')
+    config.add_route('team', '/team')
+    
     config.add_route('login', '/login')
     config.add_route('logout', '/logout')
+
     
+    config.add_route('postAdd', '/post_add')
+    config.add_route('postFeed', '/post_feed')
+    config.add_route('postGet', '/post_get/{post_id}')
+    config.add_route('postLike', '/post_like/{post_id}')
+    config.add_route('postDislike', '/post_dislike/{post_id}')
+    config.add_route('postDelete', '/post_delete/{post_id}')
+     
     
-#     config.add_route('', '/post_add')
-#     config.add_route('', '/post_like/{post_id}')
-#     config.add_route('', '/post_dislike/{post_id}')
-#     config.add_route('', '/post_delete/{post_id}')
-#     
-#     
-#     config.add_route('', '/tag_add')
-#     config.add_route('', '/tag_follow/{tag_id}')
-#     config.add_route('', '/tag_unfollow/{tag_id}')
-#     config.add_route('', '/tag_delete/{}')
+    config.add_route('tagAdd', '/tag_add')
+    config.add_route('tagGet', '/tag_get/{tag_id}')
+    config.add_route('tagFollow', '/tag_follow/{tag_id}')
+    config.add_route('tagUnfollow', '/tag_unfollow/{tag_id}')
+    config.add_route('tagDelete', '/tag_delete/{tag_id}')
     
     
     config.scan()

@@ -12,7 +12,7 @@ from sqlalchemy.orm import relationship
 from ..util import getTimeEpoch
 
 from ..users.models import User
-from ..tags.models import Tag,Badge
+from ..tags.models import Tag,Badge,Topic
 
 class Post(Base):
     
@@ -28,8 +28,11 @@ class Post(Base):
     content = Column(String(2048))
     content_type = Column(String(256))
     
+    topic_id = Column(Integer,ForeignKey('topics.id'),default = 1)
+    topic = relationship("Topic",foreign_keys=[topic_id])
+    
     def __init__(self,user_id,rank_weight,
-                    content,content_type):
+                    content,content_type,topic_id):
         
         self.user_id = user_id
         self.rank_weight = rank_weight
@@ -38,6 +41,8 @@ class Post(Base):
         self.content_type = content_type
         
         self.time = getTimeEpoch()
+        
+        self.topic_id = topic_id
         
 class PostTag(Base):
     
