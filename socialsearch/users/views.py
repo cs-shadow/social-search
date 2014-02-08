@@ -111,4 +111,4 @@ def logout(request):
     return HTTPFound(location = request.route_url('home'), headers = headers)
 
 
-        
+

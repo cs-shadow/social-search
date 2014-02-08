@@ -56,6 +56,17 @@ def main(global_config, **settings):
     config.add_route('logout', '/logout')
     
     
+#     config.add_route('', '/post_add')
+#     config.add_route('', '/post_like/{post_id}')
+#     config.add_route('', '/post_dislike/{post_id}')
+#     config.add_route('', '/post_delete/{post_id}')
+#     
+#     
+#     config.add_route('', '/tag_add')
+#     config.add_route('', '/tag_follow/{tag_id}')
+#     config.add_route('', '/tag_unfollow/{tag_id}')
+#     config.add_route('', '/tag_delete/{}')
+    
     
     config.scan()
     return config.make_wsgi_app()

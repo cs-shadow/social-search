@@ -8,9 +8,9 @@ from models import DBSession
 from sqlalchemy import and_
 import hashlib
 
-@view_config(route_name='home',renderer='json', permission='__no_permission_required__')
+@view_config(route_name='home',renderer='index.mako', permission='__no_permission_required__')
 def homeView(request):
-    return {'login' : 'no'}
+    return {}
 
 @view_config(route_name='home',effective_principals=[Authenticated], renderer='json')
 def dashboard(request):
