@@ -1,4 +1,5 @@
 
+  </div> <!-- page-wrap -->
 
   </body>
 
@@ -27,6 +28,7 @@
     <script src="../static/css/Flat-UI-master/js/jquery.tagsinput.js"></script>
     <script src="../static/css/Flat-UI-master/js/jquery.placeholder.js"></script>
     <script src="../static/css/Flat-UI-master/js/application.js"></script>
-
+    <script src="../static/css/bootstrap3-dialog/js/bootstrap-dialog.js"></script>
+    <script src="../static/js/new.js"></script>
 
     </html>

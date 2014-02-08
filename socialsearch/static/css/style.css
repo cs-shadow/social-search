@@ -66,3 +66,22 @@ html, body {
 .welcome-text {
   color: white;
 }
+
+.center {
+  text-align: center;
+}
+
+form.question input, form.question select, form.question option {
+  width: 40%;
+  float: left;
+  margin-left: 5%;
+  margin-bottom: 2%;
+}
+
+form.question input[type="submit"]
+{
+  float: right;
+  margin-right: 10%;
+  color: white;
+  width: 40%;
+}

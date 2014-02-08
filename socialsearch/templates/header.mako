@@ -16,6 +16,7 @@
     <!-- Loading Custom Css -->
     <link href="../static/css/style.css" rel="stylesheet">
     <link href="../static/css/bootstrap-social.css" rel="stylesheet">
+    <link href="../static/css/bootstrap3-dialog/css/bootstrap-dialog.css" rel="stylesheet">
     <link href="../static/css/font-awesome.css" rel="stylesheet">
     <link rel="shortcut icon" href="images/favicon.ico">
 
@@ -87,7 +88,3 @@
         </nav>
       </div><!-- /.row-demo -->
     </div><!-- header -->
-  </div>
-
-
-
