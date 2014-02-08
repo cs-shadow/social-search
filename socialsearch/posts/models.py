@@ -14,6 +14,25 @@ from ..util import getTimeEpoch
 from ..users.models import User
 from ..tags.models import Tag,Badge,Topic
 
+class Content(Base):
+    
+    __tablename__ = 'content'
+    id = Column(Integer,primary_key=True)
+    
+    title = Column(String(2048))
+    URL = Column(String(2048))
+    type = Column(String(256))
+    
+    post_id = Column(Integer,ForeignKey('posts.id'),default = 1)
+    
+    def __init__(self,title,URL,type,post_id):
+        
+        self.title = title
+        self.URL = URL
+        self.type = type
+        self.post_id = post_id
+    
+
 class Post(Base):
     
     __tablename__ = 'posts'
@@ -25,24 +44,18 @@ class Post(Base):
     time = Column(Integer)
     rank_weight = Column(Integer)
     
-    content = Column(String(2048))
-    content_type = Column(String(256))
-    
     topic_id = Column(Integer,ForeignKey('topics.id'),default = 1)
     topic = relationship("Topic",foreign_keys=[topic_id])
     
-    def __init__(self,user_id,rank_weight,
-                    content,content_type,topic_id):
+    def __init__(self,user_id,rank_weight,topic_id):
         
         self.user_id = user_id
         self.rank_weight = rank_weight
         
-        self.content = content
-        self.content_type = content_type
+        self.topic_id = topic_id
         
         self.time = getTimeEpoch()
         
-        self.topic_id = topic_id
         
 class PostTag(Base):
     
@@ -59,6 +72,7 @@ class PostTag(Base):
         
         self.post_id = post_id
         self.tag_id = tag_id
+        
         
 class PostLike(Base):
     
