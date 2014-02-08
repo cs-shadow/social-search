@@ -10,7 +10,11 @@ import hashlib
 
 @view_config(route_name='home',renderer='json', permission='__no_permission_required__')
 def homeView(request):
-    return {'hi' : 'user'}
+    return {'login' : 'no'}
+
+@view_config(route_name='home',effective_principals=[Authenticated], renderer='json')
+def dashboard(request):
+    return {'login' : 'yes'}
 
 @forbidden_view_config()
 def forbidden(request):
