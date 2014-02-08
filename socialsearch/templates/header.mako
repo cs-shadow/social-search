@@ -56,13 +56,27 @@
                </form>
              </div><!-- /.col-lg-6 -->
 
+                <%
+                if 'user' in request.session:
+                  login_text =" Welcome, " + request.session['user']['given_name']
+                else:
+                  login_text = 'Login'
+                endif 
+                %>
                <ul class="nav navbar-nav navbar-right" id="login-box">           
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login<b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"> ${login_text} <b class="caret"></b></a>
                   <span class="dropdown-arrow"></span>
                   <ul class="dropdown-menu">
-                    <a class="btn btn-block btn-social btn-facebook"><i class="fa fa-facebook"></i> Sign in with Facebook</a>
-                    <a class="btn btn-block btn-social btn-google-plus"><i class="fa fa-google-plus"></i> Sign in with Google+</a>
+                    % if 'user' in request.session:
+                    <a class="btn btn-block" href="profile"> Profile </a>
+                    <a class="btn btn-block" href="logout"> Logout </a>
+                    % else:
+                    <a class="btn btn-block btn-social btn-facebook"
+                      href="login/facebook"><i class="fa fa-facebook"></i> Sign in with Facebook</a>
+                    <a class="btn btn-block btn-social btn-google-plus"
+                      href="login/google"><i class="fa fa-google-plus"></i> Sign in with Google+</a>
+                    % endif
                   </ul>
                 </li>
                </ul>
