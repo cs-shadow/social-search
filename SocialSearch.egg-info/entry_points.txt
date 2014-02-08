@@ -1,0 +1,5 @@
+      [paste.app_factory]
+      main = socialsearch:main
+      [console_scripts]
+      initialize_SocialSearch_db = socialsearch.scripts.initializedb:main
+      
