@@ -69,8 +69,8 @@
                   <span class="dropdown-arrow"></span>
                   <ul class="dropdown-menu">
                     % if 'user' in request.session:
-                    <a class="btn btn-block" href="profile"> Profile </a>
-                    <a class="btn btn-block" href="logout"> Logout </a>
+                    <li><a class="btn btn-block" href="profile"> Profile </a></li>
+                    <li><a class="btn btn-block" href="logout"> Logout </a></li>
                     % else:
                     <a class="btn btn-block btn-social btn-facebook"
                       href="login/facebook"><i class="fa fa-facebook"></i> Sign in with Facebook</a>
