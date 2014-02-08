@@ -52,3 +52,37 @@ class User(Base):
         self.about = about
         self.profile_pic = profile_pic
         
+        
+class UserStats(Base):
+    
+    __tablename__ = 'user_stats'
+    id = Column(Integer,primary_key=True)
+    
+    user_id = Column(Integer,ForeignKey('users.id'),default = 1)
+    user = relationship("User",foreign_keys=[user_id])
+    
+    points = Column(Integer)
+    
+    def __init__(self,user_id,points):
+        
+        self.user_id = user_id
+        self.points = points
+        
+        
+class UserFollowedTag(Base):
+    
+    __tablename__ = 'user_followed_tags'
+    id = Column(Integer,primary_key=True)
+    
+    user_id = Column(Integer,ForeignKey('users.id'),default = 1)
+    user = relationship("User",foreign_keys=[user_id])
+    
+    tag_id = Column(Integer,ForeignKey('tags.id'),default = 1)
+    tag = relationship("Tag",foreign_keys=[tag_id])
+    
+    def __init__(self,user_id,tag_id):
+        
+        self.user_id = user_id
+        self.tag_id = tag_id
+        
+        
