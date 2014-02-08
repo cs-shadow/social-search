@@ -8,7 +8,10 @@ from ..util import getTimeEpoch,row2dict
 
 from sqlalchemy import and_
 
-@view_config(route_name='postAdd',renderer='json',request_method='POST')
+
+@view_config(route_name='postAdd',
+             renderer='json',
+             request_method='POST')
 def postAdd(request):
     
     currentUser = int(authenticated_userid(request))
@@ -43,17 +46,74 @@ def postAdd(request):
     
     return {'post' : post}
 
-@view_config(route_name='postGet',renderer='json')
+
+@view_config(route_name='postGet',
+             renderer='json',
+             request_method='GET',
+             permission='__no_permission_required__')
 def postGet(request):
-    return {}
+    
+    postId = int(request.matchdict['post_id'])
+    
+    dbPost = DBSession.query(Post).filter(Post.id == postId).first()
+    if dbPost == None:
+        return {'status' : '0'}
+    
+    contents = []
+    postContents = DBSession.query(Content).filter(Content.post_id == postId)
+    for content in postContents.all():
+        contents.append(row2dict(content))
+    
+    post = {}
+    post['post'] = row2dict(dbPost)
+    post['contents'] = contents
+    
+    return {'status' : '1' , 'post' : post}
 
-@view_config(route_name='postLike',renderer='json')
+
+@view_config(route_name='postLike',
+             renderer='json',
+             request_method='POST')
 def postLike(request):
-    return {}
+    
+    currentUser = int(authenticated_userid(request))
+    postId = int(request.matchdict['post_id'])
+    
+    liked = DBSession.query(PostLike).\
+    filter(and_(PostLike.post_id == postId,PostLike.user_id == currentUser)).\
+    first()
+    
+    if liked != None:
+        return {'status' : 'Already UpVoted'}
+    
+    newPostLike = PostLike(postId,currentUser)
+    DBSession.add(newPostLike)
+    DBSession.flush()
+    
+    return {'status' : 'UpVoted'}
 
-@view_config(route_name='postDislike',renderer='json')
+
+@view_config(route_name='postDislike',
+             renderer='json',
+             request_method='POST')
 def postDislike(request):
-    return {}
+    
+    currentUser = int(authenticated_userid(request))
+    postId = int(request.matchdict['post_id'])
+    
+    disliked = DBSession.query(PostDislike).\
+    filter(and_(PostDislike.post_id == postId,PostDislike.user_id == currentUser)).\
+    first()
+    
+    if disliked != None:
+        return {'status' : 'Already DownVoted'}
+    
+    newPostDislike = PostDislike(postId,currentUser)
+    DBSession.add(newPostDislike)
+    DBSession.flush()
+    
+    return {'status' : 'DownVoted'}
+
 
 @view_config(route_name='postDelete',renderer='json')
 def postDelete(request):
