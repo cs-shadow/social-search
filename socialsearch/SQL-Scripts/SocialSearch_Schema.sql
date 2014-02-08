@@ -64,17 +64,6 @@ CREATE TABLE IF NOT EXISTS
 
 
 CREATE TABLE IF NOT EXISTS 
-`user_followed_tags` (
-	`id` int(11) AUTO_INCREMENT,
-	`user_id` int(11),
-	`tag_id` int(11),
-	FOREIGN KEY (`user_id`) REFERENCES users(`id`),
-	FOREIGN KEY (`tag_id`) REFERENCES tags(`id`),
-	PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-
-CREATE TABLE IF NOT EXISTS 
 `topics` (
 	`id` int(11) AUTO_INCREMENT,
 	`name` varchar(256),
@@ -82,6 +71,21 @@ CREATE TABLE IF NOT EXISTS
 	`image` varchar(2048),
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+CREATE TABLE IF NOT EXISTS 
+`user_followed_topics` (
+	`id` int(11) AUTO_INCREMENT,
+	`user_id` int(11),
+	`topic_id` int(11),
+	FOREIGN KEY (`user_id`) REFERENCES users(`id`),
+	FOREIGN KEY (`topic_id`) REFERENCES topics(`id`),
+	PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
 
 
 

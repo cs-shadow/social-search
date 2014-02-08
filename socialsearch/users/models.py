@@ -4,7 +4,7 @@ from sqlalchemy import (
     )
 
 from ..models import Base,DBSession
-from ..tags.models import Tag,Badge
+from ..tags.models import Tag,Badge,Topic
 
 from sqlalchemy.types import String
 from sqlalchemy.schema import ForeignKey
@@ -86,20 +86,20 @@ class UserBadge(Base):
         self.badge_id = badge_id
         
         
-class UserFollowedTag(Base):
+class UserFollowedTopic(Base):
     
-    __tablename__ = 'user_followed_tags'
+    __tablename__ = 'user_followed_topics'
     id = Column(Integer,primary_key=True)
     
     user_id = Column(Integer,ForeignKey('users.id'),default = 1)
     user = relationship("User",foreign_keys=[user_id])
     
-    tag_id = Column(Integer,ForeignKey('tags.id'),default = 1)
-    tag = relationship("Tag",foreign_keys=[tag_id])
+    topic_id = Column(Integer,ForeignKey('topics.id'),default = 1)
+    topic = relationship("Topic",foreign_keys=[topic_id])
     
-    def __init__(self,user_id,tag_id):
+    def __init__(self,user_id,topic_id):
         
         self.user_id = user_id
-        self.tag_id = tag_id
+        self.topic_id = topic_id
         
         
