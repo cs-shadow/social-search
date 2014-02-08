@@ -1,0 +1,68 @@
+.header-wrapper { 
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+li.home {
+  background-color: #24394e;
+}
+
+.row nav.navbar {
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.navbar-form #srch-term {
+  width: 100%;
+}
+
+.fixed-header {
+  position: fixed;
+}
+
+#login-box .dropdown-toggle {
+  border-radius: 0;
+}
+
+#login-box .dropdown-menu {
+  padding: 10px;
+}
+
+#login-box .btn-social .fa {
+  margin-top: 5px;
+}
+
+html, body {
+  height: 100%;
+}
+.page-wrap {
+  min-height: 100%;
+  /* equal to footer height */
+  margin-bottom: -55px; 
+}
+.page-wrap:after {
+  content: "";
+  display: block;
+}
+.site-footer, .page-wrap:after {
+  /* .push must be the same height as footer */
+  height: 55px; 
+}
+.site-footer {
+  background: #2f4154;
+  padding-right: 10%;
+  padding-left: 10%;
+}
+
+.header-wrapper .navbar {
+  border-radius: 0;
+}
+
+.site-footer nav {
+  height: 55px;
+}
+
+.welcome-text {
+  color: white;
+}
