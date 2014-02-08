@@ -8,6 +8,7 @@ import urllib2,json
 
 from .models import DBSession
 from .models import User
+from ..util import row2dict
 
 __dummyImage = "static/img/img-default-med.jpg"
 
@@ -94,6 +95,8 @@ def login_complete_view(request):
                      email,user_id,domain,access_token,refresh_token,
                      about,
                      password,profile_pic)
+        
+        request.session['user'] = row2dict(dbFoundUser)
         
         DBSession.add(dbFoundUser)
         DBSession.flush()

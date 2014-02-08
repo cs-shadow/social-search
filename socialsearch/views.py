@@ -12,9 +12,11 @@ import hashlib
 def homeView(request):
     return {}
 
-@view_config(route_name='home',effective_principals=[Authenticated], renderer='json')
+@view_config(route_name='home',effective_principals=[Authenticated], renderer='dashboard.mako')
 def dashboard(request):
-    return {'login' : 'yes'}
+    
+    currentUser = int(authenticated_userid(request))    
+    return {}
 
 @forbidden_view_config()
 def forbidden(request):
