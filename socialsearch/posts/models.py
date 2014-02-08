@@ -39,4 +39,53 @@ class Post(Base):
         
         self.time = getTimeEpoch()
         
+class PostTag(Base):
     
+    __tablename__ = 'post_tags'
+    id = Column(Integer,primary_key=True)
+    
+    post_id = Column(Integer,ForeignKey('posts.id'),default = 1)
+    post = relationship("Post",foreign_keys=[post_id])
+    
+    tag_id = Column(Integer,ForeignKey('tags.id'),default = 1)
+    tag = relationship("Tag",foreign_keys=[tag_id])
+    
+    def __init__(self,post_id,tag_id):
+        
+        self.post_id = post_id
+        self.tag_id = tag_id
+        
+class PostLike(Base):
+    
+    __tablename__ = 'post_likes'
+    id = Column(Integer,primary_key=True)
+    
+    post_id = Column(Integer,ForeignKey('posts.id'),default = 1)
+    #Post Relation If Required
+    
+    user_id = Column(Integer,ForeignKey('users.id'),default = 1)
+    #User Relation If Required
+    
+    def __init__(self,post_id,user_id):
+        
+        self.post_id = post_id
+        self.user_id = user_id
+        
+
+class PostDislike(Base):
+    
+    __tablename__ = 'post_dislikes'
+    id = Column(Integer,primary_key=True)
+    
+    post_id = Column(Integer,ForeignKey('posts.id'),default = 1)
+    #Post Relation If Required
+    
+    user_id = Column(Integer,ForeignKey('users.id'),default = 1)
+    #User Relation If Required
+    
+    def __init__(self,post_id,user_id):
+        
+        self.post_id = post_id
+        self.user_id = user_id
+        
+        
