@@ -44,7 +44,7 @@
 
     <div class="col-xs-4 center">
       <div class="col-xs-12">
-        <a href="javascript:addPostModal()" class="btn btn-block btn-lg btn-primary"> Add a question </a>
+        <a href="javascript:addPostModal()" class="btn btn-block btn-lg btn-primary"> Add new Paste! </a>
       </div>    
       <h3>Notifications</h3>
       <p> Test Notifications </p>
