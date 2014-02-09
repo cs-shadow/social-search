@@ -75,7 +75,7 @@ def postGet(request):
 
 @view_config(route_name='postLike',
              renderer='json',
-             request_method='POST')
+             request_method='GET')
 def postLike(request):
     
     currentUser = int(authenticated_userid(request))
@@ -97,7 +97,7 @@ def postLike(request):
 
 @view_config(route_name='postDislike',
              renderer='json',
-             request_method='POST')
+             request_method='GET')
 def postDislike(request):
     
     currentUser = int(authenticated_userid(request))
