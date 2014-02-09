@@ -63,18 +63,24 @@ def main(global_config, **settings):
 
     
     config.add_route('postAdd', '/post_add')
-    config.add_route('postFeed', '/post_feed')
+    config.add_route('postTagAdd', '/post_tag_add/{post_id}')
+    config.add_route('postTagDelete', '/post_tag_delete/{post_id}/{tag_id}')
     config.add_route('postGet', '/post_get/{post_id}')
     config.add_route('postLike', '/post_like/{post_id}')
     config.add_route('postDislike', '/post_dislike/{post_id}')
     config.add_route('postDelete', '/post_delete/{post_id}')
-     
     
-    config.add_route('tagAdd', '/tag_add')
-    config.add_route('tagGet', '/tag_get/{tag_id}')
-    config.add_route('tagFollow', '/tag_follow/{tag_id}')
-    config.add_route('tagUnfollow', '/tag_unfollow/{tag_id}')
-    config.add_route('tagDelete', '/tag_delete/{tag_id}')
+    
+    config.add_route('topicAdd', '/topic_add')
+    config.add_route('topicGet', '/topic_get/{topic_id}')
+    config.add_route('topicFollow', '/topic_follow/{topic_id}')
+    config.add_route('topicUnfollow', '/topic_unfollow/{topic_id}')
+    config.add_route('topicDelete', '/topic_delete/{topic_id}')
+    
+    config.add_route('topicFeed', '/topicFeed')
+    config.add_route('newsFeed', '/newsFeed')
+    
+    config.add_route('search', '/search')
     
     
     config.scan()

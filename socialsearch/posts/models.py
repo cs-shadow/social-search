@@ -12,7 +12,7 @@ from sqlalchemy.orm import relationship
 from ..util import getTimeEpoch
 
 from ..users.models import User
-from ..tags.models import Tag,Badge,Topic
+from ..tags.models import Badge,Topic
 
 class Content(Base):
     
@@ -65,13 +65,12 @@ class PostTag(Base):
     post_id = Column(Integer,ForeignKey('posts.id'),default = 1)
     post = relationship("Post",foreign_keys=[post_id])
     
-    tag_id = Column(Integer,ForeignKey('tags.id'),default = 1)
-    tag = relationship("Tag",foreign_keys=[tag_id])
+    tag_name = Column(String(256))
     
-    def __init__(self,post_id,tag_id):
+    def __init__(self,post_id,tag_name):
         
         self.post_id = post_id
-        self.tag_id = tag_id
+        self.tag_name = tag_name
         
         
 class PostLike(Base):
