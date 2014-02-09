@@ -3,13 +3,13 @@ function addPostModal() {
                 '<div class="row text-center demo-row">' +
                 '<form method="POST" action="" class="question" id="new-post">' +
                 '<select class="form-control" name="topic">' +
-                '<option value="one">One</option>' +
+                '<option value="1">Topic1</option>' +
                 '<option value="two">Two</option>' +
                 '<option value="three">Three</option>' +
                 '<option value="four">Four</option>' +
                 '<option value="five">Five</option>' +
                 '</select>' +
-                '<input type="text" class="form-control" placeholder="Paste title" name="paste_title">' +
+                '<input type="text" class="form-control" placeholder="Paste title" name="title">' +
                 '<input type="text" class="form-control" placeholder="Link" name="link">' +
                 '<input type="text" class="form-control" placeholder="Link title" name="link_title">' +
                 '<span class="add-row">' +
