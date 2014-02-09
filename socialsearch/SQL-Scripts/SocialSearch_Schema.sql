@@ -54,16 +54,6 @@ CREATE TABLE IF NOT EXISTS
 
 
 CREATE TABLE IF NOT EXISTS 
-`tags` (
-	`id` int(11) AUTO_INCREMENT,
-	`name` varchar(256),
-	`image` varchar(2048),
-	PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-
-
-CREATE TABLE IF NOT EXISTS 
 `topics` (
 	`id` int(11) AUTO_INCREMENT,
 	`name` varchar(256),
@@ -120,9 +110,8 @@ CREATE TABLE IF NOT EXISTS
 `post_tags` (
 	`id` int(11) AUTO_INCREMENT,
 	`post_id` int(11),
-	`tag_id` int(11),
+	`tag_name` varchar(256),
 	FOREIGN KEY (`post_id`) REFERENCES posts(`id`),
-	FOREIGN KEY (`tag_id`) REFERENCES tags(`id`),
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

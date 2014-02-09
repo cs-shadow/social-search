@@ -4,6 +4,7 @@ from pyramid.security import authenticated_userid
 
 from models import DBSession,Post,PostTag,PostLike,PostDislike,Content
 from ..users.models import User
+from ..tags.models import Topic
 from ..util import getTimeEpoch,row2dict
 
 from sqlalchemy import and_
@@ -115,11 +116,31 @@ def postDislike(request):
     return {'status' : 'DownVoted'}
 
 
+@view_config(route_name='postTagAdd',
+             renderer='json',
+             request_method='POST')
+def postTagAdd(request):
+    
+    currentUser = int(authenticated_userid(request))
+    postId = int(request.matchdict['post_id'])
+    
+    tagName = request.POST['tag_name']
+        
+    dbPostTag = DBSession.query(PostTag).\
+    filter(and_(PostTag.post_id == postId,PostTag.tag_name == tagName)).\
+    first()
+
+    if dbPostTag != None:
+        return {'status' : 'Tag Already Present'}
+
+    newPostTag = PostTag(postId,tagName)
+    DBSession.add(newPostTag)
+    DBSession.flush()
+	
+    return {'status' : 'Tag Added'}
+
 @view_config(route_name='postDelete',renderer='json')
 def postDelete(request):
     return {}
 
-@view_config(route_name='postFeed',renderer='json')
-def postFeed(request):
-    return {}
 

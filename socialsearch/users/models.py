@@ -4,7 +4,7 @@ from sqlalchemy import (
     )
 
 from ..models import Base,DBSession
-from ..tags.models import Tag,Badge,Topic
+from ..tags.models import Badge,Topic
 
 from sqlalchemy.types import String
 from sqlalchemy.schema import ForeignKey
@@ -80,7 +80,7 @@ class UserBadge(Base):
     badge_id = Column(Integer,ForeignKey('badges.id'),default = 1)
     badge = relationship("Badge",foreign_keys=[badge_id])
     
-    def __init__(self,user_id,badge_id):
+    def __init__(self,badge_id,user_id):
         
         self.user_id = user_id
         self.badge_id = badge_id
@@ -97,7 +97,7 @@ class UserFollowedTopic(Base):
     topic_id = Column(Integer,ForeignKey('topics.id'),default = 1)
     topic = relationship("Topic",foreign_keys=[topic_id])
     
-    def __init__(self,user_id,topic_id):
+    def __init__(self,topic_id,user_id):
         
         self.user_id = user_id
         self.topic_id = topic_id
