@@ -92,10 +92,10 @@ class UserFollowedTopic(Base):
     id = Column(Integer,primary_key=True)
     
     user_id = Column(Integer,ForeignKey('users.id'),default = 1)
-    user = relationship("User",foreign_keys=[user_id])
+#     user = relationship("User",foreign_keys=[user_id])
     
     topic_id = Column(Integer,ForeignKey('topics.id'),default = 1)
-    topic = relationship("Topic",foreign_keys=[topic_id])
+#     topic = relationship("Topic",foreign_keys=[topic_id])
     
     def __init__(self,topic_id,user_id):
         

@@ -77,8 +77,8 @@ def main(global_config, **settings):
     config.add_route('topicUnfollow', '/topic_unfollow/{topic_id}')
     config.add_route('topicDelete', '/topic_delete/{topic_id}')
     
-    config.add_route('topicFeed', '/topicFeed')
-    config.add_route('newsFeed', '/newsFeed')
+    config.add_route('topicFeed', '/topic_feed')
+    config.add_route('newsFeed', '/news_feed/{offset}')
     
     config.add_route('search', '/search')
     
