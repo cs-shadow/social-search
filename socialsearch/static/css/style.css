@@ -85,3 +85,12 @@ form.question input[type="submit"]
   color: white;
   width: 40%;
 }
+
+.vote-post {
+  font-size: 0.8em;
+  font-weight: bold;
+}
+
+.vote-post a {
+  margin-right: 25px;
+}

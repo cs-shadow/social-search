@@ -15,6 +15,7 @@
     <link href="../static/css/Flat-UI-master/css/flat-ui.css" rel="stylesheet">
     <!-- Loading Custom Css -->
     <link href="../static/css/style.css" rel="stylesheet">
+    <link href="../static/css/bootstrap.icon-large.css" rel="stylesheet">
     <link href="../static/css/bootstrap-social.css" rel="stylesheet">
     <link href="../static/css/bootstrap3-dialog/css/bootstrap-dialog.css" rel="stylesheet">
     <link href="../static/css/font-awesome.css" rel="stylesheet">

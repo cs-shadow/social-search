@@ -31,8 +31,12 @@
           lorem ipsem;<br />
 
           </p>
-          <div style="position:absolute;text-align:left">
-            <a href="#">Check it out</a>    
+          <div style="text-align:left">
+            <a href="#">Check it out</a>   
+          </div>
+          <div style="text-align:left" class="vote-post">
+            <a href="post_like/1"><i class="icon-large icon-thumbs-up"></i>Upvote</a> 
+            <a href="post_dislike/1"><i class="icon-large icon-thumbs-down"></i>Downvote</a>   
           </div>
         </div>
         </div>
