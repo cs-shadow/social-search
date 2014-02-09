@@ -76,15 +76,13 @@ CREATE TABLE IF NOT EXISTS
 
 
 
-
-
-
 CREATE TABLE IF NOT EXISTS 
 `posts` (
 	`id` int(11) AUTO_INCREMENT,
 	`time` int(20),
 	`user_id` int(11),
 	`rank_weight` int(11),
+	`title` varchar(512),
 	`topic_id` int(11),
 	FOREIGN KEY (`user_id`) REFERENCES users(`id`),
 	FOREIGN KEY (`topic_id`) REFERENCES topics(`id`),

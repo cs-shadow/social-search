@@ -17,9 +17,10 @@ def postAdd(request):
     
     currentUser = int(authenticated_userid(request))
     rankWeight = None #TODO
+    pasteTitle = request.POST['paste_title']
     topic_id = request.POST['topic']
     
-    newPost = Post(currentUser,rankWeight,topic_id)
+    newPost = Post(currentUser,rankWeight,topic_id,pasteTitle)
     DBSession.add(newPost)
     DBSession.flush()
     

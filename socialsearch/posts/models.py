@@ -43,16 +43,18 @@ class Post(Base):
     
     time = Column(Integer)
     rank_weight = Column(Integer)
+    title = Column(String(512))
     
     topic_id = Column(Integer,ForeignKey('topics.id'),default = 1)
     topic = relationship("Topic",foreign_keys=[topic_id])
     
-    def __init__(self,user_id,rank_weight,topic_id):
+    def __init__(self,user_id,rank_weight,topic_id,title):
         
         self.user_id = user_id
         self.rank_weight = rank_weight
         
         self.topic_id = topic_id
+        self.title = title
         
         self.time = getTimeEpoch()
         
